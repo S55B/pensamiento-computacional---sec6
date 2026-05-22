@@ -67,7 +67,7 @@ Estas referencias sirvieron de inspiración para reinterpretar una obra de Henry
 
 
 **Principio explorado:** Ritmo visual y tensión geométrica mediante repetición con variación.
-
+Me ayude en cosas que no sabia o no me funcionaban directamente con la pagina ofical de tutoriales y recursos dentro de la pagina P5.JS
 --
 
 ### Input / Output y sistema
