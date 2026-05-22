@@ -3,7 +3,7 @@ Ejercicios y entregas de código para el curso de pensamiento computacional
 
 --
 
-## Primer ejercicio
+## Solemne 1
 
 
 https://editor.p5js.org/s5BB/sketches/uqstEXnnd
