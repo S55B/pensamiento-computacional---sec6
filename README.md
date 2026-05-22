@@ -5,12 +5,8 @@ Ejercicios y entregas de código para el curso de pensamiento computacional
 
 ## Primer ejercicio
 
-**negrita** *italica*
 
-- LISTA 1
-- LISTA 2
-
-https://p5js.org/
+https://editor.p5js.org/s5BB/sketches/uqstEXnnd
 
 --
 
