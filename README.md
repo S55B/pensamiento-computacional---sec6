@@ -13,7 +13,7 @@ https://editor.p5js.org/s5BB/sketches/uqstEXnnd
 ## Solemne 2 — Composición Bauhaus Reactiva
 
 **Autor:** Sebastián Mejias  
-**Referente:** Henryk Berlewi / Bauhaus
+**Referente:** Henryk Berlewi como principal, Referentes secundarios: Mieczysław Szczuka y El Lissitzky/ Bauhaus
 
 --
 
