@@ -284,7 +284,8 @@ Sin esta imagen, el estado final no tendría información visual que procesar.
 
 El diagrama de flujo explica el recorrido completo del sistema, incluyendo estados, inputs, procesos, decisiones, outputs y transiciones.
 
-![Diagrama de flujo](diagrama.png)
+<img width="2720" height="3680" alt="mecano_faktura_flowchart" src="https://github.com/user-attachments/assets/f48f6c24-c9a8-4c48-84b9-9a1505b0ed6e" />
+
 
 ---
 
