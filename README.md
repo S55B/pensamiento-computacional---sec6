@@ -301,8 +301,10 @@ Se considera como referente principal la obra y teoría de Henryk Berlewi, espec
 ### Bocetos
 
 Los bocetos iniciales exploraron la traducción de la estética de Berlewi a una composición propia con fondo crema, formas negras y acentos rojos.
+<img width="1439" height="671" alt="image" src="https://github.com/user-attachments/assets/c15211b9-c64c-4155-ad42-733ebb4570f2" />
 
-![Boceto inicial](capturas/boceto.png)
+<img width="1456" height="692" alt="image" src="https://github.com/user-attachments/assets/3b6f4e0c-7e56-4632-9383-bcc8bf3f40dd" />
+<img width="686" height="656" alt="image" src="https://github.com/user-attachments/assets/bb60e7d9-27f5-488f-a025-b7a41369ea59" />
 
 
 ### Capturas del proyecto
