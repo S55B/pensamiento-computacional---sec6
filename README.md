@@ -109,7 +109,8 @@ Estas referencias sirvieron de inspiración para reinterpretar una obra de Henry
 
 Sistema visual interactivo en p5.js — Examen Final, Pensamiento Computacional.
 
-![Captura del proyecto](capturas/portada.png)
+<img width="695" height="698" alt="image" src="https://github.com/user-attachments/assets/31330f5b-f548-4482-991d-e2e395c65e73" />
+
 
 ---
 
