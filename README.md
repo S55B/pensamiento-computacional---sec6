@@ -250,6 +250,8 @@ De esta manera, la imagen original se transforma en una composición mecánica, 
 ## Recursos multimedia utilizados
 
 ### Imagen: `aura.png`
+<img width="700" height="850" alt="aura" src="https://github.com/user-attachments/assets/7473c2bb-16eb-4f5e-ab54-061c57bc086f" />
+
 
 El proyecto utiliza una imagen abstracta con gradientes creada específicamente para este sistema. Esta imagen no cumple una función decorativa. Su rol es alimentar el estado generativo del proyecto.
 
