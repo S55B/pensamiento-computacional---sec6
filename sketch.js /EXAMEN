@@ -1,0 +1,276 @@
+// Examen - Pensamiento Computacional
+// Autor - Sebastián Mejías
+// Referente de diseño - Henryk Berlewi —  Obra llamada - Mecano-Faktura(1924)
+
+// Contexto para la comprensión del proyecto:
+// Berlewi escribió un manifiesto para MECANIZAR la pintura,
+// reducirla a unidades geométricas estandarizadas y reproducibles,
+// eliminando la mano del artista. Este sistema lleva esa lógica al
+// computador: una máquina de 3 estados que pasa de la composición
+// construida a mano a la mecanización automática de una imagen,
+// reconstruida solo con unidades rojas, negras y crema.
+// Usos: Tipografia propia de p5.js / Imagen (aura.png) creada con IA, especificamente
+// Para este proyecto.
+
+ // 1. Variables
+    let estado = 0;            // 0 = PORTADA, 1 = COMPOSICIÓN, 2 = MECANO-FAKTURA
+    let colorRojo;             // rojo Berlewi (255, 0, 0)
+    let colorNegro;            // negro (16, 16, 16)
+    let crema;                 // fondo (226, 220, 200)
+    let tamanoCresciente = 0;  // contador de animación del mosaico
+    let modoEspecial = false;  // modo del círculo rojo en la composición (tecla E)
+    let nombreVisible = false; // el nombre del autor empieza oculto; se revela con N
+    let fuente;                // IMAGEN multimedia: dato que alimenta la mecanización
+
+// carga del recurso multimedia antes de iniciar
+function preload() {
+  fuente = loadImage('aura.png'); // imagen abstracta con gradientes
+}
+
+ // 2. Lienzo cuadrado y definición de colores
+function setup() {
+  createCanvas(699, 699);
+  colorRojo  = color(255, 0, 0);
+  colorNegro = color(16, 16, 16);
+  crema      = color(226, 220, 200);
+}
+
+ // 3. Según el valor de estado se ejecuta una lógica completamente distinta
+//distribuida en estados.
+
+function draw() {
+  if (estado == 0) {
+    dibujarPortada();      // ESTADO 0
+  } else if (estado == 1) {
+    dibujarComposicion();  // ESTADO 1
+  } else if (estado == 2) {
+    dibujarMosaico();      // ESTADO 2
+  }
+}
+
+ // ESTADO 1 — PORTADA 
+// Pantalla de inicio, solo espera el evento de transición (espacio).
+
+function dibujarPortada() {
+  background(crema);
+
+// unidades geométricas de Berlewi 
+  noStroke();
+  fill(colorNegro);
+  rect(150, 190, 120, 120);            // cuadrado negro
+  fill(colorRojo);
+  ellipse(500, 300, 150, 150);         // círculo rojo
+
+// título y autor
+  fill(colorNegro);
+  textAlign(CENTER, CENTER);
+  textSize(40);
+  textStyle(BOLD);
+  text("MECANO-FAKTURA", width / 2, 460);
+  textStyle(NORMAL);
+  textSize(16);
+  text("Sistema visual interactivo — Henryk Berlewi", width / 2, 495);
+  text("Sebastián Mejías", width / 2, 520);
+
+// instrucción de inicio (parpadea con condicional + función de tiempo)
+  if (frameCount % 60 < 40) {
+    textSize(18);
+    text("Presiona ESPACIO para comenzar", width / 2, 610);
+  }
+}
+
+
+ // ESTADO 2 - Composición 
+function dibujarComposicion() {
+  background(crema);
+
+  push();
+  let escala = height / 850;                 // factor de ajuste (~0.82)
+  translate((width - 699 * escala) / 2, 0);  // centrar horizontalmente
+  scale(escala);
+
+ // 4. Rectangulos - superior izquierda — 5.Bucle for + map + input (mouseX)
+  fill(colorNegro);
+  let espaciado = map(mouseX, 0, width, 0, 30); // el mouse los separa
+  for (let i = 0; i < 8; i++) {
+    let yBase = 115 + (i * 48);
+    quad(90, yBase + (i * espaciado), 172, yBase + (i * espaciado),
+         172, yBase + 25 + (i * espaciado), 90, yBase + 25 + (i * espaciado));
+  }
+
+ // 6. Cuadrados negros centro
+  fill(colorNegro);
+  quad(250, 235, 277, 235, 277, 264, 250, 264);
+  quad(227, 280, 277, 280, 277, 330, 227, 330);
+  quad(197, 346, 277, 346, 277, 427, 197, 427);
+
+ // 7. Cuadro rojo central — condicional IF/ELSE con input
+  noStroke();
+  if (mouseX > width / 2) {   // cambia de color al cruzar la mitad
+    fill(colorRojo);
+  } else {
+    fill(0);
+  }
+  quad(288, 235, 482, 235, 482, 427, 288, 427);
+
+ // 8. Llamada a la funcion propia
+  dibujarES();
+  pop();
+  // ayuda de navegación (coordenadas de pantalla, fuera de la escala)
+  pistaNavegacion("M: mecanizar   E: modo especial   N: nombre");
+}
+
+ // FUNCIÓN PROPIA — resto de la composición (ordena el sistema)
+function dibujarES() {
+  // TRIÁNGULO NEGRO SUPERIOR
+  fill(colorNegro);
+  triangle(289, 116, 289, 225, 398, 225);
+
+ // RECTÁNGULOS CRECIENTES IZQUIERDA
+  fill(colorNegro);
+  quad(102, 609, 111, 609, 111, 651, 102, 651);
+  quad(121, 591, 134, 591, 134, 651, 121, 651);
+  quad(145, 568, 163, 568, 163, 651, 145, 651);
+  quad(173, 542, 196, 542, 196, 651, 173, 651);
+  quad(206, 512, 234, 512, 234, 652, 205, 652);
+  quad(245, 476, 277, 476, 277, 652, 245, 652);
+  quad(288, 438, 326, 438, 326, 652, 289, 652);
+
+ // RECTÁNGULOS CRECIENTES DERECHA
+  quad(337, 438, 428, 437, 428, 456, 337, 456);
+  quad(337, 477, 459, 477, 459, 498, 337, 498);
+  quad(336, 519, 494, 519, 494, 547, 336, 547);
+  quad(336, 568, 532, 568, 532, 600, 336, 600);
+
+ // CÍRCULO ROJO ABAJO — CONDICIONAL + random()
+  noStroke();
+  if (modoEspecial) {
+    fill(random(255), 0, 0); // rojo aleatorio si el modo está activo
+  } else {
+    fill(colorRojo);
+  }
+  ellipse(428, 658, 84, 84);
+
+ // RECTÁNGULO LARGO DERECHA — MAP con mouseY
+  fill(colorNegro);
+  let desplazamiento = map(mouseY, 0, height, 80, 0);
+  quad(553 + desplazamiento, 235,
+       609 + desplazamiento, 235,
+       609 + desplazamiento, 690,
+       553 + desplazamiento, 691);
+
+ // Texto (nombre) esta rotado a la izquierda — oculto al entrar; 
+ //se muestra/oculta con la tecla N
+ // en una posición fija del margen izquierdo.
+  if (nombreVisible) {
+    push();
+    fill(colorNegro);
+    noStroke();
+    textSize(13);
+    textAlign(CENTER, CENTER);
+    translate(30, 462);   // posición fija en el margen izquierdo
+    rotate(-HALF_PI);
+    text("Sebastián Mejías", 0, 0);
+    pop();
+  }
+
+ // RECTÁNGULO HORIZONTAL INFERIOR (fijo)
+  fill(colorNegro);
+  quad(102, 666, 326, 666, 326, 709, 102, 708);
+}
+
+
+ // ESTADO 2 — (función propia)
+ // La imagen abstracta se RECONSTRUYE como sistema: se recorre su grilla,
+ // se lee cada zona y se reemplaza por una unidad (cuadrado negro,
+ // círculo rojo o vacío crema). Aquí la imagen cumple una función: es el
+ // dato que genera el output.
+ function dibujarMosaico() {
+  background(crema);
+  noStroke();
+
+ // Animación de entrada: las celdas crecen al activarse el estado
+  if (tamanoCresciente < 1) {
+    tamanoCresciente += 0.02;            //  signifca que sube de 0 a 1 gradualmente
+  }
+
+  let celda = 24;                        // corresponde al tamaño de cada unidad de la grilla
+
+ // Bucles for / contenidos  — recorren toda la grilla de la composición 
+  for (let y = 0; y < height; y += celda) {
+    for (let x = 0; x < width; x += celda) {
+
+      // mapear la celda de la composición a un pixel de la imagen
+      let ix = int(map(x, 0, width, 0, fuente.width - 1));
+      let iy = int(map(y, 0, height, 0, fuente.height - 1));
+      let c = fuente.get(ix, iy);        // color (r, g, b, a) de esa zona
+      let r = red(c);                    // color rojo
+      let g = green(c);                  // color verde
+      let b = blue(c);                   // color azul
+      let brillo = (r + g + b) / 3;       // luminosidad de la zona
+      let rojez  = r - (g + b) / 2;       // cuán roja es la zona
+
+ // "factura": leve imperfección mecánica con random()
+   let jitter = random(-2, 2);
+
+   if (rojez > 60) {
+ // Zona roja - círculo rojo (tamaño según intensidad del rojo)
+        let d = map(rojez, 60, 255, 6, celda) * tamanoCresciente;
+        fill(colorRojo);
+        ellipse(x + celda / 2 + jitter, y + celda / 2 + jitter, d, d);
+        } else if (brillo < 110) {
+ // Zona oscura - cuadrado negro (tamaño según oscuridad)
+        let s = map(brillo, 0, 110, celda, 8) * tamanoCresciente;
+        fill(colorNegro);
+        rect(x + (celda - s) / 2 + jitter, y + (celda - s) / 2 + jitter, s, s);
+        }
+ // Zona clara - se deja el fondo crema, estaria vacío.
+    }
+  }
+
+  pistaNavegacion("M: volver a la composición   R: portada");
+}
+
+
+ // Función propia secundaria — pista de navegación en pantalla
+  function pistaNavegacion(txt) {
+  fill(colorNegro);
+  noStroke();
+  textAlign(LEFT, BOTTOM);
+  textSize(12);
+  text(txt, 12, height - 12);
+}
+
+
+ // Funciones teclado — Transiciones entre estados
+  function keyPressed() {
+ // Portada - Composición (el nombre entra oculto)
+  if (estado == 0 && key == ' ') {
+      nombreVisible = false;
+      estado = 1;
+  }
+ // Composición - Mecano-Faktura
+    else if (estado == 1 && (key == 'm' || key == 'M')) {
+    tamanoCresciente = 0;  // reinicia la animación del mosaico
+    estado = 2;
+  } 
+    else if (estado == 2 && (key == 'm' || key == 'M')) {
+    nombreVisible = false; // al volver, el nombre vuelve a estar oculto
+    estado = 1;
+  }
+
+ // Volver a la portada desde cualquier estado
+    if (key == 'r' || key == 'R') {
+    estado = 0;
+  }
+
+ // Mostrar / ocultar el nombre del autor en la composición
+    if (key == 'n' || key == 'N') {
+    nombreVisible = !nombreVisible;
+  }
+
+ // Modo especial del círculo (afecta la composición)
+    if (key == 'e' || key == 'E') {
+    modoEspecial = !modoEspecial;
+  }
+}
