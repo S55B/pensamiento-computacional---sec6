@@ -292,7 +292,9 @@ El diagrama de flujo explica el recorrido completo del sistema, incluyendo estad
 
 Se considera como referente principal la obra y teoría de Henryk Berlewi, especialmente su Mecano-Faktura, por su interés en mecanizar la pintura y reducir la composición a elementos geométricos reproducibles.
 
-![Referente Berlewi](referentes/berlewi.png)
+<img width="496" height="605" alt="image" src="https://github.com/user-attachments/assets/f1b56ef5-a25e-4af7-a203-7a372a23e3d9" />
+<img width="430" height="552" alt="image" src="https://github.com/user-attachments/assets/b650ffb0-ff60-410f-96b7-2143c2bfbdd0" />
+
 
 ### Bocetos
 
@@ -300,25 +302,23 @@ Los bocetos iniciales exploraron la traducción de la estética de Berlewi a una
 
 ![Boceto inicial](capturas/boceto.png)
 
-### Iteraciones
-
-Durante el proceso se realizaron pruebas de composición, escala, interacción con mouse y activación de modos mediante teclado. Una decisión importante fue transformar la composición de la Solemne II en un estado dentro de un sistema mayor.
-
-![Iteración composición](capturas/composicion.png)
 
 ### Capturas del proyecto
 
 **Estado 0 — Portada**
 
-![Portada](capturas/portada.png)
+<img width="695" height="698" alt="image" src="https://github.com/user-attachments/assets/f37ff2e6-dc38-4290-abfc-62260484b05e" />
+
 
 **Estado 1 — Composición interactiva**
 
-![Composición](capturas/composicion.png)
+<img width="697" height="699" alt="image" src="https://github.com/user-attachments/assets/74985577-cffd-4753-9553-aaa2b980548e" />
+
 
 **Estado 2 — Mecano-Faktura**
 
-![Mecano-Faktura](capturas/mecano-faktura.png)
+<img width="693" height="693" alt="image" src="https://github.com/user-attachments/assets/738dcd76-b7fa-4f57-a349-de798e8a524a" />
+
 
 ---
 
@@ -345,7 +345,7 @@ Las principales dificultades estuvieron en organizar los tres estados, controlar
 
 A partir del proyecto aprendí a estructurar un sistema visual más complejo usando variables, condicionales, funciones propias, bucles, `map()`, `random()` y recursos multimedia. También entendí mejor cómo el pensamiento computacional puede aplicarse al diseño: no solo para producir una imagen final, sino para crear reglas, procesos y comportamientos visuales.
 
-**Link para ejecutar:** [PEGA AQUÍ TU LINK PÚBLICO DE P5.JS]
-**Link editable / código:** [PEGA AQUÍ TU LINK EDITABLE DE P5.JS]
-**Repositorio GitHub:** [PEGA AQUÍ TU LINK DE GITHUB]
+**Link para ejecutar:** https://editor.p5js.org/s5BB/sketches/Cd6lEVP5X
+
+
 
